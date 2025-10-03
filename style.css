@@ -1,307 +1,235 @@
-/* リセット系 */
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { margin: 0; font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif; padding-top: 70px;}
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif; padding-top: 70px; }
 
-::selection {
-  color: #ff7700;
-  background-color: #45f0ff;
-}
+    /* ローダー */
+    .loader {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff;
+    }
+    .loader img {
+      width: 300px;
+      height: auto;
+    }
+    @media (prefers-color-scheme: dark) {
+      .loader { background-color: #000; }
+    }
 
-/* ヘッダー */
-.hogehoge {
-  margin: 0;
-  background: #deeb34;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-}
-.hoge img { width: 120px; height: auto; display: block; }
-.buttons { display: flex; gap: 10px; }
-.buttons a {
-  background: #deeb34;
-  color: #000;
-  text-decoration: none;
-  font-size: 0.95rem;
-  padding: 10px 18px;
-  line-height: 1;
-  display: inline-block;
-  border-radius: 6px;
-  transition: background-color 0.3s ease;
-}
-.buttons a:hover { background: #ffc800; opacity: 0.95; }
+    /* ヘッダー */
+    .hogehoge {
+      background: #deeb34;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    .hoge img {
+      width: 120px;
+      height: auto;
+    }
 
-/* Discordボタンの新しいスタイル */
-.discord-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  background: #5865F2;
-  color: white;
-  text-decoration: none;
-  padding: 16px 32px;
-  border-radius: 8px;
-  font-size: 18px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(88, 101, 242, 0.3);
-}
+    /* メニュー */
+    .buttons {
+      display: flex;
+      gap: 10px;
+    }
+    .buttons a {
+      background: #deeb34;
+      color: #000;
+      text-decoration: none;
+      font-size: 0.95rem;
+      padding: 10px 18px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+    }
+    .buttons a:hover { background: #ffc800; opacity: 0.95; }
 
-.discord-btn:hover {
-  background: #4752C4;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(88, 101, 242, 0.4);
-}
+    /* ハンバーガーメニュー */
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
 
-.discord-icon {
-  font-size: 24px;
-}
+    @media (max-width: 768px) {
+      /* スマホ時はロゴを大きくする */
+      .hoge img {
+        width: 160px; /* ←PCより少し大きめ */
+      }
 
-/* ローダー */
-.loader {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #fff; /* デフォルト白 */
-}
+      .buttons {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        background: #deeb34;
+        border-radius: 6px;
+        padding: 10px;
+      }
+      .buttons.show {
+        display: flex;
+      }
+      .menu-toggle {
+        display: block;
+      }
 
-/* ダークモード用 */
-@media (prefers-color-scheme: dark) {
-  .loader {
-    background-color: #000; /* ダーク時は黒 */
-  }
-}
+      /* サンプルコードを横スクロールなしで収める */
+      .code-container {
+        max-width: 100%;
+        padding: 15px;
+        margin: 20px auto;
+      }
+      pre {
+        font-size: 0.8rem;
+        white-space: pre-wrap; /* 折り返し表示 */
+        word-break: break-word;
+      }
+    }
 
-/* ビデオセクション */
-.video {
-  position: relative;
-  width: 100%;
-  height: 60vh;
-  overflow: hidden;
-  display: flex; justify-content: center; align-items: center;
-  text-align: center;
-  color: #fff;
-}
-.video video {
-  position: absolute; top: 50%; left: 50%;
-  transform: translate(-50%,-50%);
-  width: 100%; height: 100%; object-fit: cover; z-index: 1; opacity: 0.5;
-}
-.video .text-content {
-  position: relative; z-index: 2;
-  max-width: 1200px;
-  padding: 20px;
-  color: #000;
-}
-.video h1 { font-size: clamp(1.6rem, 4vw, 2.5rem); margin-bottom: 12px; }
-.video p { font-size: clamp(0.95rem, 2.4vw, 1.2rem); }
+    /* ビデオセクション */
+    .video {
+      position: relative;
+      width: 100%;
+      height: 60vh;
+      overflow: hidden;
+      display: flex; 
+      justify-content: center; 
+      align-items: center;
+      text-align: center;
+      color: #fff;
+    }
+    .video video {
+      position: absolute; 
+      top: 50%; 
+      left: 50%;
+      transform: translate(-50%,-50%);
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover; 
+      z-index: 1; 
+      opacity: 0.5;
+    }
+    .video .text-content {
+      position: relative; 
+      z-index: 2;
+      max-width: 1200px;
+      padding: 20px;
+      color: #000;
+    }
+    .video h1 { font-size: clamp(1.6rem, 4vw, 2.5rem); margin-bottom: 12px; }
+    .video p { font-size: clamp(0.95rem, 2.4vw, 1.2rem); }
 
-/* About セクション */
-.about {
-  width: 100%;
-  margin: 0;
-  padding: 60px 20px;
-  background: #131313;
-  color: #07c400;
-  text-align: center;
-}
+    /* About セクション */
+    .about {
+      width: 100%;
+      margin: 0;
+      padding: 60px 20px;
+      background: #131313;
+      color: #07c400;
+      text-align: center;
+    }
+    .about .content { max-width: 1000px; margin: 0 auto; }
+    .about h1 { margin-bottom: 24px; font-weight: 800; }
+    .about h2 { margin: 20px 0; font-weight: 600; line-height: 1.4; }
+    .about h3 { margin-bottom: 18px; font-weight: 500; color: #7ffb8a; line-height: 1.4; }
 
-.about .content {
-  max-width: 1000px;
-  margin: 0 auto;
-}
+    /* サンプルコードセクション */
+    .samplecode {
+      width: 100%;
+      margin: 0;
+      padding: 60px 20px;
+      background: #001192;
+      color: #ffffff;
+      text-align: center;
+    }
+    .samplecode .content { max-width: 1000px; margin: 0 auto; }
+    .samplecode h1 { margin-bottom: 24px; font-weight: 800; }
+    .code-container {
+      background-color: #1a2b3c;
+      border-radius: 12px;
+      padding: 30px;
+      max-width: 600px;
+      margin: 0 auto;
+      overflow-x: auto;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    }
+    pre {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 16px;
+      color: #f1faee;
+      line-height: 1.5;
+    }
 
-.about h1 {
-  margin-bottom: 24px;
-  font-weight: 800;
-}
-.about h2 {
-  margin: 20px 0;
-  font-weight: 800;
-  line-height: 1.2;
-}
-.about h3 {
-  margin-bottom: 18px;
-  font-weight: 600;
-  color: #7ffb8a;
-}
+    /* Discordセクション */
+    .discord {
+      width: 100%;
+      margin: 0;
+      padding: 60px 20px;
+      background: #008cff;
+      color: #ffffff;
+      text-align: center;
+    }
+    .discord .content { max-width: 1000px; margin: 0 auto; }
+    .discord h1 { margin-bottom: 24px; font-weight: 800; }
+    .discord p { margin: 20px 0; font-weight: 400; line-height: 1.6; }
+    .discord-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #5865F2;
+      color: white;
+      text-decoration: none;
+      padding: 16px 32px;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(88, 101, 242, 0.3);
+    }
+    .discord-btn:hover {
+      background: #4752C4;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(88, 101, 242, 0.4);
+    }
 
-/* サンプルコードセクション */
-.samplecode {
-  width: 100%;
-  margin: 0;
-  padding: 60px 20px;
-  background: #001192;
-  color: #ffffff;
-  text-align: center;
-}
-
-.samplecode .content {
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.samplecode h1 {
-  margin-bottom: 24px;
-  font-weight: 800;
-}
-.samplecode h2 {
-  margin: 20px 0;
-  font-weight: 800;
-  line-height: 1.2;
-}
-.samplecode p {
-  margin: 20px 0;
-  font-weight: 800;
-  line-height: 1.2;
-}
-.samplecode h3 {
-  margin-bottom: 18px;
-  font-weight: 600;
-  color: #7ffb8a;
-}
-
-/* Discordセクション */
-.discord {
-  width: 100%;
-  margin: 0;
-  padding: 60px 20px;
-  background: #008cff;
-  color: #ffffff;
-  text-align: center;
-}
-
-.discord .content {
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.discord h1 {
-  margin-bottom: 24px;
-  font-weight: 800;
-}
-.discord h2 {
-  margin: 20px 0;
-  font-weight: 800;
-  line-height: 1.2;
-}
-.discord p {
-  margin: 20px 0;
-  font-weight: 800;
-  line-height: 1.2;
-}
-.discord h3 {
-  margin-bottom: 18px;
-  font-weight: 600;
-  color: #7ffb8a;
-}
-
-.code-container {
-    background-color: #1a2b3c;
-    border-radius: 12px;
-    padding: 30px;
-    max-width: 600px;
-    margin: 0 auto;
-    overflow-x: auto;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-}
-
-pre {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 16px;
-    color: #f1faee;
-    line-height: 1.5;
-}
-
-.download {
-  width: 100%;
-  margin: 0;
-  padding: 60px 20px;
-  background: #0a003c;
-  color: #ffffff;
-  text-align: center;
-}
-
-.download .content {
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.download h1 {
-  margin-bottom: 24px;
-  font-weight: 800;
-}
-.download h2 {
-  margin: 20px 0;
-  font-weight: 800;
-  line-height: 1.2;
-}
-.download p {
-  margin: 20px 0;
-  font-weight: 800;
-  line-height: 1.2;
-}
-.download h3 {
-  margin-bottom: 18px;
-  font-weight: 600;
-  color: #7ffb8a;
-}
-
-.windows-download-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  background: #ffd500;
-  color: white;
-  text-decoration: none;
-  padding: 16px 32px;
-  border-radius: 8px;
-  font-size: 18px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(242, 237, 88, 0.3);
-}
-
-.windows-download-btn:hover {
-  background: #c2c447;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(242, 227, 88, 0.4);
-}
-
-/* スマホUI調整 */
-@media (max-width: 768px) {
-  .hogehoge {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .buttons {
-    flex-direction: column;
-    width: 100%;
-    gap: 6px;
-    margin-top: 10px;
-  }
-
-  .buttons a {
-    width: 100%;
-    text-align: center;
-    font-size: 1rem;
-  }
-
-  .video {
-    height: 40vh;
-  }
-
-  .video .text-content {
-    padding: 10px;
-    font-size: 0.9rem;
-  }
-}
+    /* ダウンロードセクション */
+    .download {
+      width: 100%;
+      margin: 0;
+      padding: 60px 20px;
+      background: #0a003c;
+      color: #ffffff;
+      text-align: center;
+    }
+    .download .content { max-width: 1000px; margin: 0 auto; }
+    .download h1 { margin-bottom: 24px; font-weight: 800; }
+    .download p { margin: 20px 0; font-weight: 400; line-height: 1.6; }
+    .windows-download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #ffd500;
+      color: white;
+      text-decoration: none;
+      padding: 16px 32px;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(242, 237, 88, 0.3);
+    }
+    .windows-download-btn:hover {
+      background: #c2c447;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(242, 227, 88, 0.4);
+    }
