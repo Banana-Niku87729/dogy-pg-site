@@ -2,31 +2,37 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Dogyは、Pythonで作成された誰でも簡単にコードができるように設計された言語です。">
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="assets/images/dogy-icon.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
   <title>Dogy - シンプルなプログラミング言語</title>
+  <style>
+  </style>
 </head>
 <body>
+  <!-- ローダー -->
   <div class="loader">
     <img id="loader-img" src="assets/gifs/loading.gif" alt="読み込み中">
   </div>
 
+  <!-- ヘッダー -->
   <header class="hogehoge">
     <div class="hoge">
       <a href="index.html">
         <img src="assets/images/logo.png" alt="ロゴ">
       </a>
     </div>
+    <i class="fa fa-bars menu-toggle"></i>
     <div class="buttons">
-	  <a href="#about" class="button04">About</a>
-      <a href="#samplecode" class="button03">Sample Code</a>
-      <a href="#discord" class="button02">Comminity</a>
-      <a href="#download" class="button01">Download</a>
+      <a href="#about">About</a>
+      <a href="#samplecode">Sample Code</a>
+      <a href="#discord">Community</a>
+      <a href="#download">Download</a>
     </div>
   </header>
 
+  <!-- ビデオセクション -->
   <div class="video">
     <video src="assets/videos/test_video.mp4" autoplay muted loop playsinline></video>
     <div class="text-content">
@@ -36,6 +42,7 @@
     </div>
   </div>
 
+  <!-- About -->
   <section id="about" class="about">
     <div class="content">
       <h1>About</h1>
@@ -44,39 +51,47 @@
       <h2>そこで、プログラミングが苦手な開発者が誰でも簡単にコードが書けるという言語を目指していきました....</h2>
     </div>
   </section>
+
+  <!-- サンプルコード -->
   <section id="samplecode" class="samplecode">
-	<div class="content">
-		<h1>サンプルコード</h1>
-		<p>Dogyでは前述のとおりGUIを構築する言語として特化しています。<br></p>
-		<p>Pythonでは6～8行ほどでウィンドウが表示できるのに対し、Dogyは1行で済みます。<br></p>
-		<p>また、ボタンの処理も追加できるため、簡易的なGUIアプリであれば知識がなくても短時間での作成が可能です。</p>
-		<div class="code-container">
-            <pre>// Dogyでのウィンドウ表示<br>dogy window 600x500 "Sample Window" id=sample</pre>
-        </div>
-	</div>
+    <div class="content">
+      <h1>サンプルコード</h1>
+      <p>Dogyでは前述のとおりGUIを構築する言語として特化しています。</p>
+      <p>Pythonでは6～8行ほどでウィンドウが表示できるのに対し、Dogyは1行で済みます。</p>
+      <div class="code-container">
+        <pre>// Dogyでのウィンドウ表示
+dogy window 600x500 "Sample Window" id=sample</pre>
+      </div>
+    </div>
   </section>
+
+  <!-- Discord -->
   <section id="discord" class="discord">
-	<div class="content">
-		<h1>コミュニティに参加しよう</h1>
-		<p>Dogy公式Discordサーバーでは、プログラミングのサポートや質問対応、最新情報の共有を行っています。</p>
-		<p>また、常に礼儀正しく対応することが求められているため、経験者による高圧的な態度が禁止されています。</p>
-		<a href="https://discord.gg/qQUR4YyFqJ" target="_blank" class="discord-btn">
-			<i class="fa-brands fa-discord"></i>
-			Discordサーバーに参加する
-		</a>
-	</div>
+    <div class="content">
+      <h1>コミュニティに参加しよう</h1>
+      <p>Dogy公式Discordサーバーでは、プログラミングのサポートや質問対応、最新情報の共有を行っています。</p>
+      <a href="https://discord.gg/qQUR4YyFqJ" target="_blank" class="discord-btn">
+        <i class="fa-brands fa-discord"></i>
+        Discordサーバーに参加する
+      </a>
+    </div>
   </section>
+
+  <!-- ダウンロード -->
   <section id="download" class="download">
-	<div class="content">
-		<h1>Dogyをダウンロード</h1>
-		<p>現在DogyではWindowsのみの対応ですが、順次対応予定です。</p>
-		<a href="https://github.com/Banana-Niku87729/dogy-pg/releases/latest/download/dogy_installer_windows.exe" target="_blank" class="windows-download-btn">
-			<i class="fa-brands fa-windows"></i>
-			Windows版をダウンロード
-		</a>
-	</div>
+    <div class="content">
+      <h1>Dogyをダウンロード</h1>
+      <p>現在DogyではWindowsのみの対応ですが、順次対応予定です。</p>
+      <a href="https://github.com/Banana-Niku87729/dogy-pg/releases/latest/download/dogy_installer_windows.exe" target="_blank" class="windows-download-btn">
+        <i class="fa-brands fa-windows"></i>
+        Windows版をダウンロード
+      </a>
+    </div>
   </section>
+
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="main.js"></script>
+  <script>
+  </script>
 </body>
 </html>
